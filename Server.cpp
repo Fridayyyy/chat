@@ -7,7 +7,8 @@ using namespace std;
 Server::Server() {
     //初始化服务器地址和端口
     serverAddr.sin_family=PF_INET;
-
+    serverAddr.sin_port= htons(SERVER_PORT);
+    serverAddr.sin_addr.s_addr= inet_addr(SERVER_IP);
     //初始化socket
     listener=0;
 
@@ -16,7 +17,7 @@ Server::Server() {
 }
 
 void Server::Init() {
-    cout<<"init server..."<endl;
+    cout<<"init server..."<<endl;
     //step 1 : 创建监听socket
     //使用socket
     listener = socket(PF_INET,SOCK_STREAM,0);
@@ -134,7 +135,7 @@ void Server::Start() {
         //step 4 ：循环处理所有就绪事件
         //4.1如果是新连接则接受连接并将连接添加到epoll fd
         //accept（） addfd（）
-        for (int i = 0; i < ; ++i) {
+        for (int i = 0; i < epoll_events_count; ++i) {
             int sockfd = events[i].data.fd;
             if (sockfd == listener){
                 struct sockaddr_in client_address;

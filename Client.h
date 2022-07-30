@@ -9,9 +9,9 @@ using namespace std;
 class Client{
 public:
     Client();
-    void Connect;
-    void Close;
-    void Start;
+    void Connect();
+    void Close();
+    void Start();
 
 private:
     int sock;
@@ -21,7 +21,7 @@ private:
     int pipe_fd[2];
 
     bool isClientwork;
-    char message[BUFSIZ];
+    char message[BUF_SIZE];
     struct sockaddr_in serverAddr;
 };
 

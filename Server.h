@@ -29,7 +29,7 @@ private:
     int epfd;
 
     //客户端列表
-    list<int> clients_list
+    list<int> clients_list;
 };
 
 #endif

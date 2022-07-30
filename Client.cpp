@@ -53,7 +53,7 @@ void Client::Close(){
 }
 
 void Client::Start(){
-    static struct epoll_event event2[2];
+    static struct epoll_event events[2];
     Connect();
 
     pid=fork();
@@ -67,7 +67,7 @@ void Client::Start(){
         cout << "Please input 'exit' to exit the chat room" << endl;
 
         while (isClientwork){
-            bzero(&message,BUF_SIZ);
+            bzero(&message,BUF_SIZE);
             fgets(message,BUF_SIZE,stdin);
 
             if (strncasecmp(message,EXIT, strlen(EXIT))==0){
